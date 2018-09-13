@@ -38,10 +38,21 @@ MongoClient.connect("mongodb://localhost:27017/TodoApp",(err,client)=>{
    //     console.log(JSON.stringify(res.ops,undefined,2))
    // })
    // 
-   db.collection("Users").find({name:"Len"}).toArray().then((docs)=>{
-    console.log(JSON.stringify(docs,undefined,2));
-   });
-   
+  // db.collection("Users").find({name:"Len"}).toArray().then((docs)=>{
+  //  console.log(JSON.stringify(docs,undefined,2));
+  // });
+  // 
+  //deleteMany
+  db.collection("Todos").findOneAndDelete({completed:false}).then((res)=>{
+      console.log(res);
+  })
+  db.collection("Users").deleteMany({name:"Yahya"})
+  db.collection.findOneAndDelete({
+      _id:new ObjectID("5b99567f998f6f50965c23b0")
+    }).then((res)=>{
+        console.log(JSON.stringify(res,undefined,2));
+    })
+  })
  client.close();
    
 });
